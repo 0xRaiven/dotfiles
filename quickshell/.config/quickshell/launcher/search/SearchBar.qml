@@ -9,7 +9,6 @@ Rectangle {
     property alias cursorPosition: searchInput.cursorPosition
     readonly property bool inputFocused: searchInput.activeFocus
 
-    signal textChanged(string text)
     signal escapePressed()
     signal returnPressed()
     signal downPressed()
@@ -70,8 +69,6 @@ Rectangle {
         font.weight: Font.Normal
         focus: true
         clip: true
-
-        onTextChanged: searchBar.textChanged(text)
 
         Keys.onEscapePressed: searchBar.escapePressed()
         Keys.onReturnPressed: searchBar.returnPressed()

@@ -68,8 +68,7 @@ Item {
             if (topBar.activeMode === "commands") return "Search commands & controls..."
             return "Search"
         }
-
-        onTextChanged: function(text) { topBar.textChanged(text) }
+        onTextChanged: topBar.textChanged(searchBar.text)
         onEscapePressed: topBar.escapePressed()
         onReturnPressed: topBar.returnPressed()
         onDownPressed: topBar.downPressed()
