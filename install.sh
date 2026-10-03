@@ -89,6 +89,9 @@ LEGACY_PATHS=(
   "$HOME_DIR/.config/hypr/input"
   "$HOME_DIR/.config/hypr/rules"
   "$HOME_DIR/.config/hypr/services"
+  "$HOME_DIR/.config/fish/completions"
+  "$HOME_DIR/.config/fish/conf.d"
+  "$HOME_DIR/.config/fish/functions"
 )
 
 usage() {
@@ -362,25 +365,9 @@ install_repo() {
   if ! (
     set -e
 
-    # Copy managed config directories
-    copy_tree "$REPO_DIR/hypr/.config/hypr" "$HOME_DIR/.config/hypr"
-    copy_tree "$REPO_DIR/waybar/.config/waybar" "$HOME_DIR/.config/waybar"
-    copy_tree "$REPO_DIR/fish/.config/fish" "$HOME_DIR/.config/fish"
-
-    if [ -d "$REPO_DIR/kitty/.config/kitty" ]; then
-      copy_tree "$REPO_DIR/kitty/.config/kitty" "$HOME_DIR/.config/kitty"
-    fi
-
-    if [ -d "$REPO_DIR/quickshell/.config/quickshell" ]; then
-      copy_tree "$REPO_DIR/quickshell/.config/quickshell" "$HOME_DIR/.config/quickshell"
-    fi
-
-    if [ -d "$REPO_DIR/matugen/.config/matugen" ]; then
-      copy_tree "$REPO_DIR/matugen/.config/matugen" "$HOME_DIR/.config/matugen"
-    fi
-
-    if [ -d "$REPO_DIR/electron/.config" ]; then
-      copy_tree "$REPO_DIR/electron/.config" "$HOME_DIR/.config"
+    # Copy managed config directories from dots/.config into $HOME/.config
+    if [ -d "$REPO_DIR/dots/.config" ]; then
+      copy_tree "$REPO_DIR/dots/.config" "$HOME_DIR/.config"
     fi
 
     # Ensure D-Bus user service override prevents plasma_waitforname freeze

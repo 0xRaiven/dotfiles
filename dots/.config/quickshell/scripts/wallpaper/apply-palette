@@ -23,8 +23,8 @@ matugen image \
   "$WALLPAPER"
 
 REPO_DIR="${DOTFILES_REPO_DIR:-${HOME}/git/dotfiles}"
-if [ -d "$REPO_DIR/quickshell/.config/quickshell/launcher" ]; then
-  cp -f "${HOME}/.config/quickshell/launcher/Colors.qml" "$REPO_DIR/quickshell/.config/quickshell/launcher/Colors.qml" 2>/dev/null || true
+if [ -d "$REPO_DIR/dots/.config/quickshell/launcher" ]; then
+  cp -f "${HOME}/.config/quickshell/launcher/Colors.qml" "$REPO_DIR/dots/.config/quickshell/launcher/Colors.qml" 2>/dev/null || true
 fi
 
 if command -v pkill >/dev/null 2>&1; then

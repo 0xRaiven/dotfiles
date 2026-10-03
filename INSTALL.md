@@ -19,85 +19,78 @@ This repository is the primary source of truth for the current Linux desktop env
 ├── install.sh
 ├── uninstall.sh
 ├── assets/
-│   ├── icons/
-│   ├── cursors/
-│   └── fonts/
-├── fish/
+│   └── .gitkeep
+├── dots/
 │   └── .config/
-│       └── fish/
-│           ├── config.fish
-│           ├── completions/
-│           ├── conf.d/
-│           └── functions/
-├── hypr/
-│   └── .config/
-│       └── hypr/
-│           ├── hyprland.conf
-│           ├── hyprland.lua
-│           ├── hyprland/
-│           │   ├── colors.lua
-│           │   ├── env.lua
-│           │   ├── execs.lua
-│           │   ├── general.lua
-│           │   ├── keybinds.lua
-│           │   ├── lib/
-│           │   │   └── init.lua
-│           │   ├── monitors.lua
-│           │   └── rules.lua
-│           ├── custom/
-│           │   ├── env.lua
-│           │   ├── execs.lua
-│           │   ├── general.lua
-│           │   ├── keybinds.lua
-│           │   ├── monitors.lua
-│           │   └── rules.lua
-│           └── hyprpaper.conf
-├── kitty/
-│   └── .config/
-│       └── kitty/
-│           └── kitty.conf
-├── matugen/
-│   └── .config/
-│       └── matugen/
-│           ├── config.toml
-│           └── templates/
-│               ├── hyprland-colors.lua
-│               ├── quickshell-colors.qml
-│               └── waybar-colors.css
-- Matugen also updates Quickshell colors (`launcher/Colors.qml`) and Hyprland theme values at `~/.config/hypr/hyprland/colors.lua`.
-├── quickshell/
-│   └── .config/
-│       └── quickshell/
-│           ├── launcher/
-│           │   ├── Colors.qml
-│           │   └── shell.qml
-│           ├── rice/
-│           │   └── shell.qml
-│           └── scripts/
-│               ├── clipboard/
-│               │   ├── clipboard-items
-│               │   ├── clipboard-restore
-│               │   └── clipboard-start
-│               ├── launcher/
-│               │   ├── launcher-items
-│               │   └── spotlight-items
-│               ├── system/
-│               │   ├── notification-daemon
-│               │   ├── notification-start
-│               │   ├── power-profile-cycle
-│               │   ├── power-profile-status
-│               │   ├── screenshot
-│               │   └── waybar-start
-│               └── wallpaper/
-│                   ├── apply-palette
-│                   ├── apply-wallpaper
-│                   ├── hyprpaper-start
-│                   ├── wallpaper-items
-│                   ├── wallpaper-next
-│                   └── wallpaper-random
-├── waybar/
-│   └── .config/
+│       ├── code-flags.conf
+│       ├── electron-flags.conf
+│       ├── fish/
+│       │   └── config.fish
+│       ├── hypr/
+│       │   ├── hyprland.conf
+│       │   ├── hyprland.lua
+│       │   ├── hyprpaper.conf
+│       │   ├── hyprland/
+│       │   │   ├── colors.lua
+│       │   │   ├── env.lua
+│       │   │   ├── execs.lua
+│       │   │   ├── general.lua
+│       │   │   ├── keybinds.lua
+│       │   │   ├── lib/
+│       │   │   │   └── init.lua
+│       │   │   ├── monitors.lua
+│       │   │   └── rules.lua
+│       │   └── custom/
+│       │       ├── env.lua
+│       │       ├── execs.lua
+│       │       ├── general.lua
+│       │       ├── keybinds.lua
+│       │       ├── monitors.lua
+│       │       └── rules.lua
+│       ├── kitty/
+│       │   └── kitty.conf
+│       ├── matugen/
+│       │   ├── config.toml
+│       │   └── templates/
+│       │       ├── hyprland-colors.lua
+│       │       ├── quickshell-colors.qml
+│       │       └── waybar-colors.css
+│       ├── quickshell/
+│       │   ├── launcher/
+│       │   │   ├── Colors.qml
+│       │   │   ├── shell.qml
+│       │   │   ├── ResultsCard.qml
+│       │   │   ├── TopBar.qml
+│       │   │   ├── clipboard/
+│       │   │   ├── results/
+│       │   │   ├── search/
+│       │   │   └── wallpaper/
+│       │   ├── rice/
+│       │   │   └── shell.qml
+│       │   └── scripts/
+│       │       ├── clipboard/
+│       │       │   ├── clipboard-items
+│       │       │   ├── clipboard-restore
+│       │       │   └── clipboard-start
+│       │       ├── launcher/
+│       │       │   ├── launcher-items
+│       │       │   └── spotlight-items
+│       │       ├── system/
+│       │       │   ├── notification-daemon
+│       │       │   ├── notification-start
+│       │       │   ├── power-profile-cycle
+│       │       │   ├── power-profile-status
+│       │       │   ├── screenshot
+│       │       │   └── waybar-start
+│       │       └── wallpaper/
+│       │           ├── apply-palette
+│       │           ├── apply-wallpaper
+│       │           ├── hyprpaper-start
+│       │           ├── wallpaper-items
+│       │           ├── wallpaper-next
+│       │           └── wallpaper-random
 │       └── waybar/
+│           ├── colors.css
 │           ├── config.jsonc
 │           └── style.css
 └── .git/
