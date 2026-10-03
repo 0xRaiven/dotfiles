@@ -1,0 +1,3 @@
+-- Custom environment variables override
+-- Example:
+-- hl.env("MY_VAR", "value")

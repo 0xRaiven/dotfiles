@@ -4,22 +4,35 @@ if not package.path:find(hypr_dir, 1, true) then
     package.path = hypr_dir .. "/?.lua;" .. hypr_dir .. "/?/init.lua;" .. package.path
 end
 
-local modules = {
-    "config.monitors",
-    "config.look_and_feel",
-    "config.environment",
-    "input.gestures",
-    "bindings.apps",
-    "bindings.navigation",
-    "bindings.utilities",
-    "rules.windows",
-    "services.autostart",
-}
+-- Core libraries & helper utilities
+require("hyprland.lib")
 
-for _, mod in ipairs(modules) do
-    package.loaded[mod] = nil
-    local ok, err = pcall(require, mod)
-    if not ok then
-        io.stderr:write(string.format("[hyprland.lua] Error loading module '%s': %s\n", mod, tostring(err)))
-    end
+-- Environment variables
+require("hyprland.env")
+if is_file_exists(HOME .. "/.config/hypr/custom/env.lua") then
+    require("custom.env")
+end
+
+-- Core default configurations
+require("hyprland.execs")
+require("hyprland.general")
+require("hyprland.monitors")
+require("hyprland.rules")
+require("hyprland.keybinds")
+
+-- Custom configurations (safe user overrides)
+if is_file_exists(HOME .. "/.config/hypr/custom/execs.lua") then
+    require("custom.execs")
+end
+if is_file_exists(HOME .. "/.config/hypr/custom/general.lua") then
+    require("custom.general")
+end
+if is_file_exists(HOME .. "/.config/hypr/custom/monitors.lua") then
+    require("custom.monitors")
+end
+if is_file_exists(HOME .. "/.config/hypr/custom/rules.lua") then
+    require("custom.rules")
+end
+if is_file_exists(HOME .. "/.config/hypr/custom/keybinds.lua") then
+    require("custom.keybinds")
 end

@@ -1,0 +1,3 @@
+-- Custom keybindings override
+-- Example:
+-- bind("SUPER + F1", hl.dsp.exec_cmd("alacritty"))

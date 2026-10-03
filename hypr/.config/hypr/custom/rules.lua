@@ -1,0 +1,3 @@
+-- Custom window and layer rules override
+-- Example:
+-- hl.window_rule({ match = { class = "steam" }, tile = true })

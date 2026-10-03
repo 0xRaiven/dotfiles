@@ -32,7 +32,10 @@ if command -v pkill >/dev/null 2>&1; then
 fi
 
 if command -v hyprctl >/dev/null 2>&1; then
-  colors_file="${HOME}/.config/hypr/config/colors.lua"
+  colors_file="${HOME}/.config/hypr/hyprland/colors.lua"
+  if [ ! -f "$colors_file" ]; then
+    colors_file="${HOME}/.config/hypr/config/colors.lua"
+  fi
   if [ -f "$colors_file" ]; then
     primary="$(grep -Po 'primary\s*=\s*"\K[^"]*' "$colors_file" 2>/dev/null || true)"
     surface_variant="$(grep -Po 'surface_variant\s*=\s*"\K[^"]*' "$colors_file" 2>/dev/null || true)"

@@ -1,4 +1,10 @@
-local colors = require("config.colors")
+local ok, colors = pcall(require, "hyprland.colors")
+if not ok or not colors then
+    colors = { primary = "#8ecff2", surface_variant = "#40484d" }
+end
+
+local active_col = "0xff" .. (colors.primary and colors.primary:sub(2) or "8ecff2") .. "ff"
+local inactive_col = "0xff" .. (colors.surface_variant and colors.surface_variant:sub(2) or "40484d") .. "ff"
 
 hl.config({
     general = {
@@ -9,8 +15,8 @@ hl.config({
         resize_on_border = true,
         allow_tearing = false,
         col = {
-            active_border = "0xff" .. colors.primary:sub(2) .. "ff",
-            inactive_border = "0xff" .. colors.surface_variant:sub(2) .. "ff",
+            active_border = active_col,
+            inactive_border = inactive_col,
         },
     },
 
@@ -84,6 +90,12 @@ hl.config({
     },
 })
 
+-- Touchpad gesture actions
+pcall(hl.gesture, { fingers = 3, direction = "horizontal", action = "workspace" })
+pcall(hl.gesture, { fingers = 4, direction = "horizontal", action = "workspace" })
+pcall(hl.gesture, { fingers = 3, direction = "vertical", action = "special" })
+
+-- Animation curves
 hl.curve("easeOut", {
     type = "bezier",
     points = {
@@ -107,84 +119,15 @@ hl.curve("gamingSpring", {
     dampening = 20,
 })
 
-hl.animation({
-    leaf = "global",
-    enabled = true,
-    speed = 10,
-    bezier = "gamingEase",
-})
-
-hl.animation({
-    leaf = "windows",
-    enabled = true,
-    speed = 7,
-    spring = "gamingSpring",
-})
-
-hl.animation({
-    leaf = "windowsIn",
-    enabled = true,
-    speed = 7,
-    spring = "gamingSpring",
-    style = "popin 92%",
-})
-
-hl.animation({
-    leaf = "windowsOut",
-    enabled = true,
-    speed = 6,
-    spring = "gamingSpring",
-    style = "popin 92%",
-})
-
-hl.animation({
-    leaf = "windowsMove",
-    enabled = true,
-    speed = 8,
-    spring = "gamingSpring",
-})
-
-hl.animation({
-    leaf = "workspaces",
-    enabled = true,
-    speed = 7,
-    spring = "gamingSpring",
-    style = "slidefade 18%",
-})
-
-hl.animation({
-    leaf = "workspacesIn",
-    enabled = true,
-    speed = 7,
-    spring = "gamingSpring",
-    style = "slidefade 18%",
-})
-
-hl.animation({
-    leaf = "workspacesOut",
-    enabled = true,
-    speed = 6,
-    spring = "gamingSpring",
-    style = "slidefade 18%",
-})
-
-hl.animation({
-    leaf = "fadeIn",
-    enabled = true,
-    speed = 8,
-    bezier = "gamingEase",
-})
-
-hl.animation({
-    leaf = "fadeOut",
-    enabled = true,
-    speed = 7,
-    bezier = "gamingEase",
-})
-
-hl.animation({
-    leaf = "fade",
-    enabled = true,
-    speed = 8,
-    bezier = "gamingEase",
-})
+-- Animations
+hl.animation({ leaf = "global", enabled = true, speed = 10, bezier = "gamingEase" })
+hl.animation({ leaf = "windows", enabled = true, speed = 7, spring = "gamingSpring" })
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 7, spring = "gamingSpring", style = "popin 92%" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 6, spring = "gamingSpring", style = "popin 92%" })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 8, spring = "gamingSpring" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 7, spring = "gamingSpring", style = "slidefade 18%" })
+hl.animation({ leaf = "workspacesIn", enabled = true, speed = 7, spring = "gamingSpring", style = "slidefade 18%" })
+hl.animation({ leaf = "workspacesOut", enabled = true, speed = 6, spring = "gamingSpring", style = "slidefade 18%" })
+hl.animation({ leaf = "fadeIn", enabled = true, speed = 8, bezier = "gamingEase" })
+hl.animation({ leaf = "fadeOut", enabled = true, speed = 7, bezier = "gamingEase" })
+hl.animation({ leaf = "fade", enabled = true, speed = 8, bezier = "gamingEase" })

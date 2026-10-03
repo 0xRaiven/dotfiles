@@ -34,27 +34,24 @@ This repository is the primary source of truth for the current Linux desktop env
 │       └── hypr/
 │           ├── hyprland.conf
 │           ├── hyprland.lua
-│           ├── bindings/
-│           │   ├── apps.lua
-│           │   ├── navigation.lua
-│           │   └── utilities.lua
-│           ├── config/
-│           │   ├── constants.lua
-│           │   ├── environment.lua
-│           │   ├── look_and_feel.lua
-│           │   └── monitors.lua
-│           ├── input/
-│           │   └── gestures.lua
-│           ├── rules/
-│           │   └── windows.lua
-│           ├── services/
-│           │   └── autostart.lua
-│           └── wallpapers/
-│               ├── aot.jpg
-│               ├── blogo.jpg
-│               ├── giyutomioka.jpg
-│               ├── gl.jpg
-│               └── hsin.jpg
+│           ├── hyprland/
+│           │   ├── colors.lua
+│           │   ├── env.lua
+│           │   ├── execs.lua
+│           │   ├── general.lua
+│           │   ├── keybinds.lua
+│           │   ├── lib/
+│           │   │   └── init.lua
+│           │   ├── monitors.lua
+│           │   └── rules.lua
+│           ├── custom/
+│           │   ├── env.lua
+│           │   ├── execs.lua
+│           │   ├── general.lua
+│           │   ├── keybinds.lua
+│           │   ├── monitors.lua
+│           │   └── rules.lua
+│           └── hyprpaper.conf
 ├── kitty/
 │   └── .config/
 │       └── kitty/
@@ -67,7 +64,7 @@ This repository is the primary source of truth for the current Linux desktop env
 │               ├── hyprland-colors.lua
 │               ├── quickshell-colors.qml
 │               └── waybar-colors.css
-- Matugen also updates Quickshell colors (`launcher/Colors.qml`) and Hyprland theme values at `~/.config/hypr/config/colors.lua`.
+- Matugen also updates Quickshell colors (`launcher/Colors.qml`) and Hyprland theme values at `~/.config/hypr/hyprland/colors.lua`.
 ├── quickshell/
 │   └── .config/
 │       └── quickshell/

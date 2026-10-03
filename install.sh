@@ -84,6 +84,11 @@ LEGACY_PATHS=(
   "$HOME_DIR/.local/bin/wallpaper-picker"
   "$HOME_DIR/.local/bin/wallpaper-random"
   "$HOME_DIR/.local/bin/waybar-start"
+  "$HOME_DIR/.config/hypr/bindings"
+  "$HOME_DIR/.config/hypr/config"
+  "$HOME_DIR/.config/hypr/input"
+  "$HOME_DIR/.config/hypr/rules"
+  "$HOME_DIR/.config/hypr/services"
 )
 
 usage() {
