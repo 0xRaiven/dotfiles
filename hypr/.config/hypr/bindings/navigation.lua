@@ -27,10 +27,11 @@ bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 for workspace = 1, 9 do
     bind("SUPER + " .. workspace, hl.dsp.focus({ workspace = tostring(workspace) }))
-    bind("SUPER + SHIFT + " .. workspace, hl.dsp.focus({ workspace = tostring(workspace) }))
+    bind("SUPER + SHIFT + " .. workspace, hl.dsp.window.move({ workspace = tostring(workspace) }))
 end
 
-bind("SUPER + O", hl.dsp.focus({ workspace = "10" }))
+pcall(hl.unbind, "SUPER + O")
+bind("SUPER + 0", hl.dsp.focus({ workspace = "10" }))
 bind("SUPER + SHIFT + 0", hl.dsp.window.move({ workspace = "10" }))
 bind("SUPER + BracketLeft", hl.dsp.focus({ workspace = "e-1" }))
 bind("SUPER + BracketRight", hl.dsp.focus({ workspace = "e+1" }))

@@ -57,6 +57,10 @@ MANAGED_TARGETS=(
   "$HOME_DIR/.config/kitty"
   "$HOME_DIR/.config/quickshell"
   "$HOME_DIR/.config/matugen"
+  "$HOME_DIR/.config/code-flags.conf"
+  "$HOME_DIR/.config/electron-flags.conf"
+  "$HOME_DIR/.local/share/dbus-1/services/org.freedesktop.Notifications.service"
+  "$HOME_DIR/.local/share/dbus-1/services/org.kde.plasma.Notifications.service"
   "$SCRIPT_TARGET"
   "$HOME_DIR/.local/share/dotfiles-assets"
 )
@@ -155,6 +159,7 @@ detect_and_install_packages() {
     ["fish"]="fish"
     ["quickshell"]="quickshell"
     ["matugen"]="matugen"
+    ["mako"]="mako"
     ["cliphist"]="cliphist"
     ["wl-copy"]="wl-clipboard"
     ["grim"]="grim"
@@ -367,6 +372,30 @@ install_repo() {
 
     if [ -d "$REPO_DIR/matugen/.config/matugen" ]; then
       copy_tree "$REPO_DIR/matugen/.config/matugen" "$HOME_DIR/.config/matugen"
+    fi
+
+    if [ -d "$REPO_DIR/electron/.config" ]; then
+      copy_tree "$REPO_DIR/electron/.config" "$HOME_DIR/.config"
+    fi
+
+    # Ensure D-Bus user service override prevents plasma_waitforname freeze
+    ensure_dir "$HOME_DIR/.local/share/dbus-1/services"
+    if [ "$DRY_RUN" = true ]; then
+      log "[dry-run] configure dbus notification services"
+    else
+      cat << 'EOF' > "$HOME_DIR/.local/share/dbus-1/services/org.kde.plasma.Notifications.service"
+[D-BUS Service]
+Name=org.freedesktop.Notifications
+Exec=/bin/false
+EOF
+      cat << EOF > "$HOME_DIR/.local/share/dbus-1/services/org.freedesktop.Notifications.service"
+[D-BUS Service]
+Name=org.freedesktop.Notifications
+Exec=$HOME_DIR/.config/quickshell/scripts/system/notification-daemon
+EOF
+      if command -v busctl >/dev/null 2>&1; then
+        busctl --user call org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus ReloadConfig 2>/dev/null || true
+      fi
     fi
 
     if [ -d "$REPO_DIR/assets" ]; then

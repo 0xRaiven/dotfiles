@@ -85,6 +85,8 @@ This repository is the primary source of truth for the current Linux desktop env
 │               │   ├── launcher-items
 │               │   └── spotlight-items
 │               ├── system/
+│               │   ├── notification-daemon
+│               │   ├── notification-start
 │               │   ├── power-profile-cycle
 │               │   ├── power-profile-status
 │               │   ├── screenshot

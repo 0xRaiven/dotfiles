@@ -5,7 +5,7 @@ return {
     launcher = "quickshell --no-duplicate -c launcher",
     file_manager = "nautilus",
     default_browser = "zen-browser",
-    antigravity = home .. "/AntigravityIDE/'Antigravity IDE'/antigravity-ide",
+    antigravity = home .. "/Desktop/AntigravityIDE/antigravity-ide",
     editor = "code",
     monitor = "eDP-1",
     monitor_scale = 1.0,

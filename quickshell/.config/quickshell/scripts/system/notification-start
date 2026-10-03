@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+LOCK_FILE="${XDG_RUNTIME_DIR:-/tmp}/dotfiles-notification.lock"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+exec flock --nonblock "$LOCK_FILE" "$SCRIPT_DIR/notification-daemon" "$@"
